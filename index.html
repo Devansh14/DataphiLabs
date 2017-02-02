@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        
+        <title>Patient Information</title>
+        
+      <!--Import Google Icon Font-->
+<!--      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+      <!--Import materialize.css-->
+        
+        <link rel="stylesheet" href="fonts/font-awesome-4.6.3/css/font-awesome.min.css">
+        
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        
+        <link href="css/fusion_style.min.css" type="text/css" rel="stylesheet">
+        
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+      <body>
+          
+          <div class="row">
+            <div class="border col s10 offset-s1">
+                
+                    <div class="col s8 offset-s2">
+                        <div class="borderdashed col s6 offset-s3 section">
+                        <span class="flow-text">Add Patient Details</span>
+                        </div>
+                    
+                    </div>
+                
+                <form action="insert_patient_directory.php" method="post" name="myForm" onsubmit="return(validate());">
+                        
+                <div class="input-field col s6">
+                    <input id="first_name" type="text"  class="validate" name="first_name">
+                        <label for="first_name">First Name</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" name="last_name">
+                        <label for="last_name">Last Name</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <input id="age" type="text"  class="validate"name="age">
+                        <label for="age">Age</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="dob" type="text"  class="datepicker" name="dob" required>
+                        <label for="dob">DOB</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <select name="gender">
+                        <option value="-1" disabled selected >Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                    </select>
+                </div>
+                
+                    <div class="input-field col s6">
+                    <input id="phone_no" type="text"  class="validate" name="phone_no">
+                        <label for="phone_no">Contact No.</label>
+                </div>
+                
+                
+                <div class="input-field col s8 offset-s2">
+                        <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                        <label for="description">Description</label>
+                </div>
+                <div class="row">
+                    <button class="waves-effect btn col s2 offset-s5">Submit</button>
+                </div>
+            </form>
+                
+
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+  });
+        </script>                
+                
+              </div>
+          </div>
+          <script src="js/jquery-3.1.1.min.js"></script>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('select').material_select();
+              });
+        </script>
+          <script>
+              $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 100 // Creates a dropdown of 15 years to control year
+                });
+          </script>
+          
+          <script type="text/javascript">
+   
+      // Form validation code will come here.
+      function validate()
+      {
+      
+         if( document.myForm.first_name.value == "" )
+         {
+            alert( "Please provide your first name!" );
+            document.myForm.first_name.focus() ;
+            return false;
+         }
+         
+         if( document.myForm.last_name.value == "" )
+         {
+            alert( "Please provide your last name!" );
+            document.myForm.last_name.focus() ;
+            return false;
+         }
+         
+         if( document.myForm.age.value == "" ||
+         isNaN( document.myForm.age.value ) ||
+         document.myForm.age.value.length != 2 )
+         {
+            alert( "Please provide a age in the numeric format ##." );
+            document.myForm.age.focus() ;
+            return false;
+         }
+          
+         if( document.myForm.phone_no.value == "" ||
+         isNaN( document.myForm.phone_no.value ) ||
+         document.myForm.phone_no.value.length != 10 )
+         {
+            alert( "Please provide your contact number in the numeric format ##########." );
+            document.myForm.age.focus() ;
+            return false;
+         }
+         
+         
+          if( document.myForm.gender.value == "-1" )
+          {
+            alert( "Please select your gender!" );
+            return false;
+         }
+          
+        if( document.myForm.description.value == "" )
+         {
+            alert( "Please provide some description!" );
+            document.myForm.description.focus() ;
+            return false;
+         }
+         
+         return( true );
+      }
+   //-->
+</script>
+      </body>
+</html>
